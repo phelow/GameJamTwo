@@ -7,6 +7,11 @@ public class TypingInput : MonoBehaviour {
 
 	[SerializeField]private TextBlurb m_curBlurb;
 
+	[SerializeField]private Transform m_cameraTransform;
+	[SerializeField]private Rigidbody2D m_cameraRigidBody;
+
+	[SerializeField]private float m_camSpeed = 10.0f;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -33,6 +38,13 @@ public class TypingInput : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if (m_curBlurb == null) {
+			return;
+		}
+
+		m_cameraRigidBody.AddForce ((m_curBlurb.transform.position - m_cameraTransform.position ) * Time.deltaTime * m_camSpeed);
+
+
 		bool shift = false;
 		if (Input.GetKeyDown (KeyCode.CapsLock)) {
 			m_capslock = true;

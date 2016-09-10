@@ -7,8 +7,11 @@ public class TextBlurb : MonoBehaviour {
 	protected TextBlurb m_lastBlurb;
 
 	[SerializeField] private Text m_text;
+	[SerializeField] private Object m_ghostLetter;
 	private string m_startingText;
 	private bool m_backType = false;
+
+	[SerializeField]private int m_maxLetters = 10;
 
 
 
@@ -26,9 +29,21 @@ public class TextBlurb : MonoBehaviour {
 		m_nextBlurb.SetLastBlurb (this);
 	}
 
+
+	public void GenerateLetters(string letter){
+		if (letter.Length <= 0 || letter == null) {
+			return;
+		}
+
+		for (int i = 0; i < m_maxLetters; i++) {
+			(Instantiate (m_ghostLetter, this.transform.position,this.transform.rotation) as GameObject).GetComponent<GhostLetter>().StartFalling(letter,m_text.alignment);
+		}
+	}
+
 	public TextBlurb TryToComplete(string nextChar){
 		if (m_backType == true) {
 			if (m_text.text [m_text.text.Length-1] + "" == nextChar) {
+				this.GenerateLetters (m_text.text);
 				m_text.text = m_text.text.Substring (0, m_text.text.Length - 1);
 			}
 
@@ -36,6 +51,7 @@ public class TextBlurb : MonoBehaviour {
 		}
 
 		if (m_text.text [0] + "" == nextChar) {
+			this.GenerateLetters (m_text.text);
 			m_text.text = m_text.text.Substring (1, m_text.text.Length - 1);
 		}
 
@@ -65,6 +81,7 @@ public class TextBlurb : MonoBehaviour {
 
 	public void EnableBackType(){
 		this.m_backType = true;
+		this.m_text.alignment = TextAnchor.MiddleLeft;
 	}
 
 	public void EnableBackTypeAllPrevious(){
