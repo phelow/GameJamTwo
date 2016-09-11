@@ -2014,7 +2014,7 @@ Prefab:
     - target: {fileID: 114000010908077200, guid: 77758a7853d191147b52ffa1dc8dcace,
         type: 2}
       propertyPath: m_Text
-      value: challonge
+      value: challenge
       objectReference: {fileID: 0}
     - target: {fileID: 114000012639252820, guid: 77758a7853d191147b52ffa1dc8dcace,
         type: 2}
@@ -3231,7 +3231,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
 --- !u!1001 &920984143
 Prefab:
   m_ObjectHideFlags: 0
@@ -6271,7 +6271,7 @@ Prefab:
     - target: {fileID: 224000011352283810, guid: 3d3e4819266b5c04face860f7ecef86f,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 3584.0417
+      value: 3704.3
       objectReference: {fileID: 0}
     - target: {fileID: 224000011352283810, guid: 3d3e4819266b5c04face860f7ecef86f,
         type: 2}
@@ -7511,7 +7511,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1001 &1944307199
 Prefab:
   m_ObjectHideFlags: 0
@@ -7827,12 +7827,12 @@ Prefab:
     - target: {fileID: 224000010748547052, guid: 77758a7853d191147b52ffa1dc8dcace,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 948.7
+      value: 898
       objectReference: {fileID: 0}
     - target: {fileID: 224000010748547052, guid: 77758a7853d191147b52ffa1dc8dcace,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 138.4
+      value: 121
       objectReference: {fileID: 0}
     - target: {fileID: 224000010748547052, guid: 77758a7853d191147b52ffa1dc8dcace,
         type: 2}

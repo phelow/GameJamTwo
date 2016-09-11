@@ -70,7 +70,7 @@ public class TextBlurb : MonoBehaviour {
 	
 	}
 
-	public void Reset(){
+	public virtual void Reset(){
 		this.m_text.text = m_startingText;
 	}
 
