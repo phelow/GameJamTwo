@@ -142,8 +142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_text: {fileID: 114000012746799052}
   m_rb: {fileID: 50000013246286702}
-  m_maxForce: 10
-  m_maxTorque: 6
+  m_maxForce: 20
+  m_maxTorque: 3
 --- !u!114 &114000013726590356
 MonoBehaviour:
   m_ObjectHideFlags: 1

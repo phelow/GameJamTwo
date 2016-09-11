@@ -20,7 +20,7 @@ public class GhostLetter : MonoBehaviour {
 	}
 
 	private IEnumerator InterpolateColor(){
-		Color StartingColor = new Color (1.0f, 1.0f, 1.0f, Random.Range (0.0f, 0.8f));
+		Color StartingColor = new Color (1.0f, 1.0f, 1.0f, Random.Range (0.0f, 0.5f));
 		Color EndColor = new Color (0.0f, 0.0f, 0.0f, 0.0f);
 		float lerpTime = Random.Range (0.1f, 0.3f);
 
@@ -28,18 +28,19 @@ public class GhostLetter : MonoBehaviour {
 		while (t < lerpTime) {
 			t += Time.deltaTime;
 
-			m_text.color = Color.Lerp(StartingColor,EndColor,t/lerpTime/2);
+			m_text.color = Color.Lerp(StartingColor,EndColor,t/lerpTime/4);
 			yield return new WaitForEndOfFrame ();
 		}
 
-		lerpTime = Random.Range (0.1f, 5.0f);
+		lerpTime = Random.Range (0.1f, 10.0f);
 
 		t = 0.0f;
 		while (t < lerpTime) {
 			t += Time.deltaTime;
 
-			m_text.color = Color.Lerp(StartingColor,EndColor,lerpTime/2 + t/lerpTime);
+			m_text.color = Color.Lerp(StartingColor,EndColor,t/lerpTime);
 			yield return new WaitForEndOfFrame ();
 		}
+		Destroy (this.gameObject);
 	}
 }

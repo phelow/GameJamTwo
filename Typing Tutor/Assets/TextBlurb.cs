@@ -3,13 +3,13 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class TextBlurb : MonoBehaviour {
-	[SerializeField] private TextBlurb m_nextBlurb;
+	[SerializeField] protected TextBlurb m_nextBlurb;
 	protected TextBlurb m_lastBlurb;
 
-	[SerializeField] private Text m_text;
+	[SerializeField] protected Text m_text;
 	[SerializeField] private Object m_ghostLetter;
-	private string m_startingText;
-	private bool m_backType = false;
+	protected string m_startingText;
+	protected bool m_backType = false;
 
 	[SerializeField]private int m_maxLetters = 10;
 
@@ -30,7 +30,7 @@ public class TextBlurb : MonoBehaviour {
 	}
 
 
-	public void GenerateLetters(string letter){
+	protected void GenerateLetters(string letter){
 		if (letter.Length <= 0 || letter == null) {
 			return;
 		}
@@ -40,8 +40,12 @@ public class TextBlurb : MonoBehaviour {
 		}
 	}
 
-	public TextBlurb TryToComplete(string nextChar){
+	public virtual TextBlurb TryToComplete(string nextChar){
 		if (m_backType == true) {
+			if (m_text.text [m_text.text.Length - 1] + "" == " ") {
+				m_text.text = m_text.text.Substring (0, m_text.text.Length - 1);
+			}
+
 			if (m_text.text [m_text.text.Length-1] + "" == nextChar) {
 				this.GenerateLetters (m_text.text);
 				m_text.text = m_text.text.Substring (0, m_text.text.Length - 1);
@@ -50,6 +54,9 @@ public class TextBlurb : MonoBehaviour {
 			return m_text.text.Length == 0 ? m_lastBlurb : this;
 		}
 
+		if (m_text.text [0] + "" == " ") {
+			m_text.text = m_text.text.Substring (1, m_text.text.Length - 1);
+		}
 		if (m_text.text [0] + "" == nextChar) {
 			this.GenerateLetters (m_text.text);
 			m_text.text = m_text.text.Substring (1, m_text.text.Length - 1);
@@ -93,4 +100,6 @@ public class TextBlurb : MonoBehaviour {
 		this.m_lastBlurb.EnableBackTypeAllPrevious ();
 	}
 
+	public virtual void Activate(){
+	}
 }
